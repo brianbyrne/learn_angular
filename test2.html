@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.2.0-dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body ng-controller="StoreController as store">
+  <div ng-repeat="product in store.products | orderBy:'price' | limitTo:3">
+	<h1>{{product.name | uppercase}}</h1>
+	<h2>{{product.price | currency}} </h2>
+	<p> {{product.description}} </p>
+	<button ng-show="product.canPurchase"> Add to Cart </button>
+	<section ng-controller="PanelController as panel">
+		<ul class="nav nav-pills">
+			<li ng-class="{active: panel.isSelected(1)}"> 
+				<a href ng-click="panel.SelectTab(1)">Description</a> 
+			</li>
+			<li ng-class="{active: panel.isSelected(2)}> 
+				<a href ng-click="panel.SelectTab(2)">Specifications</a> 
+			</li>
+			<li ng-class="{active: panel.isSelected(3)}> 
+				<a href ng-click="panel.SelectTab(3)">Reviews</a> 
+			</li>
+		</ul>
+		{{panel.tab}}
+	
+	</section>
+	  
+  
+  </div>
+  
+  </body>
+</html>
