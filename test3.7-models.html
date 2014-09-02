@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.2.0-dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app3.7.models.js"></script>
+  </head>
+  <body ng-controller="StoreController as store">
+  <div ng-repeat="product in store.products | orderBy:'price' | limitTo:3">
+	<h1>{{product.name | uppercase}}</h1>
+	<h2>{{product.price | currency}} </h2>
+	<p> {{product.description}} </p>
+	<button ng-show="product.canPurchase"> Add to Cart </button>
+	
+	<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+		<blockquote>
+			<b>Stars: {{reviewCrtl.review.starts}}</b>
+			{{reviewCtrl.review.body}}
+			<cite>by: {{reviewCtrl.review.author}}</cite>
+		</blockquote>
+	</form>
+	  
+  
+  </div>
+  
+  </body>
+</html>

@@ -1,0 +1,63 @@
+docs.angularjs.org
+
+
+
+
+notes:
+
+loop inside product loop
+	ng-repeat in product.reviews
+	 {{review.stars}}
+	 
+	 
+	 
+	 <select ng-model="review.starts">
+	<option value="1"></option>
+	
+<input type="checkbox" ng-model="review.terms"/>
+
+<input type="radio" ng-model="review.color" value="red"/>
+<input type="radio" ng-model="review.color" value="yellow"/>
+<input type="radio" ng-model="review.color" value="green"/>
+
+----------------------------------------------------------------------------------------
+Directives
+
+
+controller:
+	app.directive("productSpecs", function() {
+    return {
+      restrict: 'A', // attribute directive - use E for element directive
+      templateUrl: 'product-specs.html'
+    };
+  });
+  
+ 
+ html:
+ <!--its an attribute directive-->
+ <div ng-show="tab.isSet(2)" product-specs></div>
+ 
+ 
+ directive file:
+ 
+            <h4>Specs</h4>
+            <ul class="list-unstyled">
+              <li>
+                <strong>Shine</strong>
+                : {{product.shine}}</li>
+              <li>
+                <strong>Faces</strong>
+                : {{product.faces}}</li>
+              <li>
+                <strong>Rarity</strong>
+                : {{product.rarity}}</li>
+              <li>
+                <strong>Color</strong>
+                : {{product.color}}</li>
+            </ul>
+ 
+ 
+----------------------------------------------------------------------------------------
+Directives with controllers
+
+
